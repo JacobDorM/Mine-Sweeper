@@ -1,2 +1,2 @@
 # Mine-Sweeper
-Coding=Academy sprint1
+Coding-Academy sprint1
