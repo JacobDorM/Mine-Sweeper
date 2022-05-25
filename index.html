@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MineSweeper</title>
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body onload="initGame()">
+    <div class="header">
+      <button class="play-again" onclick="initGame()">Play Again!</button>
+      <div class="timerDisplay">00 : 00 : 000</div>
+    </div>
+    <div class="div-table">
+      <table class="table">
+        <tbody class="board"></tbody>
+      </table>
+    </div>
+
+    <!-- <h1 class="game-over">Game Over!</h1>
+    <h1 class="victory">victory!</h1> -->
+    <script src="js/utils.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
