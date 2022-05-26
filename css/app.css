@@ -5,7 +5,17 @@
 }
 
 body {
+  background-image: url('/Img/last3.jpg');
   background-image: url('Img/last3.jpg');
+  background-image: url('img/last3.jpg');
+  background-image: url('/last3.jpg');
+  background-image: url('last3.jpg');
+  background-image: url('Last3.jpg');
+  background-image: url('/Last3.jpg');
+  background-image: url('/Img/last3.jpg');
+  background-image: url('Img/last3.jpg');
+  background-image: url('img/last3.jpg');
+  background-image: url('/img/last3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
