@@ -5,17 +5,8 @@
 }
 
 body {
-  background-image: url('/Img/last3.jpg');
-  background-image: url('Img/last3.jpg');
-  background-image: url('img/last3.jpg');
-  background-image: url('/last3.jpg');
   background-image: url('last3.jpg');
-  background-image: url('Last3.jpg');
-  background-image: url('/Last3.jpg');
-  background-image: url('/Img/last3.jpg');
-  background-image: url('Img/last3.jpg');
-  background-image: url('img/last3.jpg');
-  background-image: url('/img/last3.jpg');
+
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -23,7 +14,7 @@ body {
 }
 
 .container {
-  background-image: url('/Img/wood.jpg');
+  background-image: url('wood.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
