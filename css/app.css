@@ -1,48 +1,85 @@
-body {
-  background-color: black;
+* {
+  margin: 0;
+  padding: 0;
   color: white;
 }
 
-.cell {
-  width: 40px;
-  height: 40px;
+body {
+  background-image: url('/img/last3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center center;
+}
+
+.container {
+  background-image: url('/img/wood.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 625px;
+  width: 533px;
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.play-again {
+  margin: auto;
+}
+
+.emojy {
+  font-size: 400%;
+}
+
+.timerDisplay {
+  margin: auto;
   text-align: center;
-  background-color: gray;
-  /* display:none; */
+  font-size: 150%;
+}
+
+.level {
+  margin: auto;
+  text-align: center;
+}
+
+.lives {
+  margin: auto;
+  font-size: 175%;
+  text-align: center;
+}
+
+.cell {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  background-color: white;
 }
 
 .cell span {
+  color: black;
   display: none;
 }
 
 .cell:hover {
   background-color: lightcoral;
-  /* display:none; */
-}
-
-.cell img {
-  width: 25px;
-  height: auto;
-}
-
-.header {
-  background-color: red;
-  display: flex;
-  justify-content: space-between;
-}
-
-.timerDisplay {
-  background-color: green;
-  height: 10vh;
-  width: 40vw;
-  text-align: center;
-  line-height: 10vh;
-  font-size: 125%;
-  font-weight: 700;
-  border: 1px solid black;
-  border-radius: 10px;
 }
 
 .flag::before {
   content: '🚩';
+}
+
+table {
+  margin: auto;
+}
+
+.details {
+  display: flex;
+}
+.footer {
+  background-color: black;
+  text-align: center;
+}
+.footer span {
+  font-size: 40px;
 }
