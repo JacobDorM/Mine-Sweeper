@@ -17,7 +17,7 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 625px;
+  height: 100vh;
   width: 533px;
   border: 2px solid black;
   border-radius: 10px;
@@ -91,7 +91,7 @@ table {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 415px;
+  width: 33vw;
 }
 
 .hints {
