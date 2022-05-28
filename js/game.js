@@ -11,7 +11,7 @@ const LIVE3 = '❤️❤️❤️'
 
 var gBoard
 var gLevel = { SIZE: 4, MINES: 2 }
-var gGame = { isOn: false, shownCount: 0, markedCount: 0, secsPassed: 0, lives: 3 }
+var gGame = { isOn: false, shownCount: 0, markedCount: 0, secsPassed: 0, lives: 3, hint: 3, isHintOn: false, safeClick: 3 }
 var gNumberOfPlacedMine = 0
 
 var gTimerRef = document.querySelector('.timerDisplay')
@@ -61,6 +61,12 @@ function cellClicked(elCell, i, j) {
     replaceMine(i, j)
     return
   }
+  if (gGame.isHintOn) {
+    if (gGame.secsPassed === 0) gameStart()
+    useHint(i, j)
+    return
+  }
+  console.log('mores')
   var CellClassLastIndex = elCell.classList.length - 1
   if (elCell.classList[CellClassLastIndex] === 'flag') return
   if (!gGame.isOn && gGame.shownCount > 0) return
@@ -89,9 +95,10 @@ function restart() {
   clearInterval(gSetIntervalId)
   gSetIntervalId = undefined
   gNumberOfPlacedMine = 0
-  gGame.markedCount = 0
-  gGame = { isOn: false, shownCount: 0, markedCount: 0, secsPassed: 0, lives: 3 }
+  gGame = { isOn: false, shownCount: 0, markedCount: 0, secsPassed: 0, lives: 3, hint: 3, isHintOn: false, safeClick: 3 }
   ;[gMilliseconds, gSeconds, gMinutes] = [0, 0, 0]
   gTimerRef.innerText = '00 : 00 : 000'
   setLives()
+  setHints()
+  displayBestScores()
 }

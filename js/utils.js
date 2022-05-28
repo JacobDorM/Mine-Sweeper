@@ -12,7 +12,7 @@ function renderBoard(board) {
 
       currCell.isMine ? (cellClass += ' mine') : (cellClass += ' number')
       strHTML += `\t<td class="cell ${cellClass}"  onclick="cellClicked(this,${i},${j})" oncontextmenu="rightClicked(event,this,${i},${j})">\n`
-      currCell.isMine ? (strHTML += `<span>${MINE}</span>`) : (strHTML += `<span>${board[i][j].minesAroundCount}</span>`)
+      currCell.isMine ? (strHTML += `<span class="mines">${MINE}</span>`) : (strHTML += `<span>${board[i][j].minesAroundCount}</span>`)
       strHTML += '\t</td>\n'
     }
     strHTML += '</tr>\n'
@@ -33,15 +33,47 @@ function randomMinePicker() {
   return false
 }
 
-function loopAroundSelectedCell(i, j, callbackfunction) {
+function loopAroundSelectedCell(i, j, callFunction) {
   for (let t = i - 1; t <= i + 1; t++) {
     for (let l = j - 1; l <= j + 1; l++) {
       if (t === -1 || l === -1) continue
       if (t === gLevel.SIZE || l === gLevel.SIZE) continue
       if (gBoard[t][l] === gBoard[i][j]) continue
-      callbackfunction(t, l)
+      callFunction(t, l)
     }
   }
+}
+
+function loopAroundSelectedCell2(i, j, callFunction) {
+  var zero = {
+    z: i,
+    x: j,
+  }
+  var zeros = []
+  for (let t = i - 1; t <= i + 1; t++) {
+    for (let l = j - 1; l <= j + 1; l++) {
+      if (t === -1 || l === -1) continue
+      if (t === gLevel.SIZE || l === gLevel.SIZE) continue
+      if (gBoard[t][l] === gBoard[i][j]) continue
+      if (!gBoard[t][l].isShown) {
+        if (gBoard[t][l].minesAroundCount === 0) {
+          if (zeros.length === 0) {
+            console.log(`1 - ${zeros.length} - ${zero.z} `, zero.z)
+            zero.z = t
+            zero.x = l
+            console.log(`2- s${zeros.length} - ${zero.z} `, zero.z)
+            zeros.push({
+              zero,
+            })
+          }
+        }
+        callFunction(t, l)
+      }
+    }
+  }
+
+  if (zeros.length === 0) return
+  loopAroundSelectedCell2(zeros[0].zero.z, zeros[0].zero.x, callFunction)
 }
 
 function countMines(t, l) {
@@ -96,18 +128,23 @@ function gameStart() {
 }
 
 function revealCell(elCell, i, j) {
-  if (elCell.firstElementChild.innerText === '0') loopAroundSelectedCell(i, j, displayOnAround)
   if (!gBoard[i][j].isMine) {
-    displayOn(elCell, i, j)
-    gGame.shownCount++
-    checkGameOver()
+    if (elCell.firstElementChild.innerText === '0') loopAroundSelectedCell2(i, j, displayOnAround)
+    if (!gBoard[i][j].isShown) {
+      displayOn(elCell, i, j)
+      gGame.shownCount++
+      checkGameOver()
+    }
   } else clickedMine(elCell)
 }
 
 function displayOn(elCell, i, j) {
-  gBoard[i][j].isShown = true
-  var elCellSpan = elCell.firstElementChild
-  elCellSpan.style.display = 'block'
+  if (!gBoard[i][j].isShown) {
+    gBoard[i][j].isShown = true
+    var elCellSpan = elCell.firstElementChild
+    elCellSpan.style.display = 'block'
+    console.log(gGame.shownCount)
+  }
 }
 
 function checkGameOver() {
@@ -119,6 +156,7 @@ function checkGameOver() {
 function gameWin() {
   gElSpanEmojy.innerHTML = WIN
   gameStop()
+  storeBesTime(gTimerRef)
 }
 
 function gameStop() {

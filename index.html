@@ -9,27 +9,43 @@
   </head>
 
   <body onload="initGame()">
-    <div class="container">
-      <div class="header">
-        <div class="level">
-          <div><u>Choose Your Level:</u></div>
-          <label for="easy">Begginer(<span>16</span>):<input type="radio" name="difficulty" id="easy" onclick="difficulty(this)" /></label>
-          <label for="hard">Medium(<span>64</span>):<input type="radio" name="difficulty" id="hard" onclick="difficulty(this)" /></label>
-          <label for="extreme"> Expert(<span>144</span>):<input type="radio" name="difficulty" id="extreme" onclick="difficulty(this)" /></label>
+    <div class="wrapper">
+      <div class="left-container">
+        <div class="hints">
+          <span class="hint1" onclick="turnOnHint(this)"></span>
+          <span class="hint2" onclick="turnOnHint(this)"></span>
+          <span class="hint3" onclick="turnOnHint(this)"></span>
         </div>
-        <div class="details">
-          <div class="lives">remaining lives:<span class="next-num"></span></div>
-          <div class="play-again" onclick="initGame()"><span class="emojy">😃</span></div>
-          <div class="timerDisplay">00 : 00 : 000</div>
+        <div class="scores"></div>
+        <div class="safe-click">
+          <button class="safe-click-btn" onclick="safeClick()">safe-click</button>
         </div>
       </div>
-      <table class="table">
-        <tbody class="board"></tbody>
-      </table>
-      <div class="footer"><span>Dor Menachem</span></div>
+      <div class="container">
+        <div class="header">
+          <div class="level">
+            <div><u>Choose Your Level:</u></div>
+            <label for="easy">Begginer(<span>16</span>):<input type="radio" name="difficulty" id="easy" onclick="difficulty(this)" /></label>
+            <label for="hard">Medium(<span>64</span>):<input type="radio" name="difficulty" id="hard" onclick="difficulty(this)" /></label>
+            <label for="extreme"> Expert(<span>144</span>):<input type="radio" name="difficulty" id="extreme" onclick="difficulty(this)" /></label>
+          </div>
+          <div class="details">
+            <div class="lives">remaining lives:<span class="next-num"></span></div>
+            <div class="play-again" onclick="initGame()"><span class="emojy">😃</span></div>
+            <div class="timerDisplay">00 : 00 : 000</div>
+          </div>
+        </div>
+        <table class="table">
+          <tbody class="board"></tbody>
+        </table>
+        <div class="footer"><span>Dor Menachem</span></div>
+      </div>
     </div>
 
+    <script src="js/score.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/game.js"></script>
+    <script src="js/hints.js"></script>
+    <script src="js/safeClick.js"></script>
   </body>
 </html>
